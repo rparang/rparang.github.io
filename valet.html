@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reza Parang - Valet, an Internal Communication Tool</title>
+  <link rel="stylesheet" href="./theme/css/application.css">
+  <link rel="stylesheet" href="./theme/css/pure.css">
+  <link rel="stylesheet" href="./theme/css/grids.css">
+  <link rel="stylesheet" href="./theme/css/font-awesome.css">
+</head>
+<body>
+  <div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-5">
+      <div class="sidebar-wrapper">
+        <a class="logo" href=".">Reza Parang</a>
+        <div class="icons">
+          <a href="https://github.com/rparang" target="_blank"><span class="fa fa-github-square"></span></a>
+          <a href="http://www.linkedin.com/in/rezaparang" target="_blank"><span class="fa fa-linkedin-square"></span></a>
+          <a href="https://twitter.com/RezaParang" target="_blank"><span class="fa fa-twitter-square"></span></a>
+        </div>
+        <p class="bio">I write here about my projects.</p>
+      </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-4-5">
+<article class="entry" data-tag="">
+  <header>
+    <h1>Valet, an Internal Communication Tool</h1>
+  </header>
+  <section>
+    <p><em>Originally published June 2014</em></p>
+<p><img alt="Valet, an internal communication tool" src="./images/valet.png"></p>
+<p>I'm not very good at internal communication. As a product manager, this should be one of my strong suits: refine technical issues into clear points and spread these to sales, marketing, and service teams.  </p>
+<p>It's not that I'm incapable of doing this, it's that I just don't enjoy it very much. I also find that this can become an area that demands the greatest time, as opposed to working directly on making the product better.  </p>
+<p>Once the startup company I was working at was acquired by Oracle, this problem became pronounced. If you’ve worked at a large company before, you quickly realize a portion of your success is tied to your ability to communicate through email. There are teams spanning multiple departments, each dispersed across different geographies and timezones and all expecting information to be in a system that is unique to their teams. These systems can be blogs, internal social networks, wikis, and more. Naturally, everyone gives up and uses email.  </p>
+<p>In my case, the problem is as such: I’ll be emailed by someone on the sales team about the progress of a feature. I’ll gather resources like attachments, links to help files, provide short descriptions, and more. This usually takes between five and thirty minutes. I’ll fire it off and forget about the transaction, leaving this person to have to email me again for any updates that will inevitably come.  </p>
+<p>I tried to automate this with an app called <a href="https://github.com/rparang/valet">Valet</a>. Here’s how it works:  </p>
+<ul>
+<li>I receive an email for more information about a feature  </li>
+<li>I’ll reply to all and CC Valet. In the body of the email, I’ll include tags like @@featurename for each feature I’m interested in  </li>
+<li>Valet receives the email and parses the email to find the tags  </li>
+<li>Everyone in the email is created as users and are subscribed to the feature  </li>
+<li>An email is sent from Valet to each user with all information, documents, and links for the feature  </li>
+</ul>
+<p>I’ve been using this for about a week or so as of this writing, and feedback has been positive. There are some benefits:  </p>
+<ul>
+<li>Valet is integrated into an existing workflow everyone already knows (see <a href="https://www.mdswanson.com/blog/2013/07/21/email-as-the-interface.html">email as an interface</a>)  </li>
+<li>No UI to learn  </li>
+<li>No new user registration  </li>
+<li>The feature “owns” the users, so any update to the feature can be pushed out to subscribers automatically  </li>
+</ul>
+<p>I’m going to explore this idea of templatizing all internal communication, so this type of distribution can be extended beyond email to channels like blogs, internal portals, project management tools, and more.  </p>
+  </section>
+</article>
+    </div>
+  </div>
+</body>
+</html>

@@ -22,13 +22,13 @@
       </div>
     </div>
     <div class="content pure-u-1 pure-u-md-4-5">
-<article class="entry" data-tag="javascript">
+<article class="entry" data-tag="">
   <header>
     <h1>Coderbyte Challenge: Bracket Matcher</h1>
   </header>
   <section>
-    <p><em>almost 7 years ago</em>
-Recently I've been attempting the programming challenges on <a href="https://web.archive.org/web/20210622222916/http://coderbyte.com/CodingArea/Challenges/">Coderbyte</a>. Coderbyte is a site that has a handful of questions that allots points given how 1) fast you complete the challenge and 2) how correct your answer is.</p>
+    <p><em>Originally published June 2014</em></p>
+<p>Recently I've been attempting the programming challenges on <a href="https://coderbyte.com/CodingArea/Challenges/">Coderbyte</a>. Coderbyte is a site that has a handful of questions that allots points given how 1) fast you complete the challenge and 2) how correct your answer is.</p>
 <p>Once you solve a challenge correctly, it shows you solutions from other users, which might be its most addicting part. Typically I'll either scoff at someone's approach or look at their answer in amazement.</p>
 <p>For one challenge though, I wasn't sure.</p>
 <p>The challenge is:</p>
@@ -76,7 +76,7 @@ Recently I've been attempting the programming challenges on <a href="https://web
 <span class="p">}</span>
 </code></pre></div>
 
-<p>Let's see how these perform against one another. To do this, I need some text with lots of parentheses. Some <a href="https://web.archive.org/web/20210622222916/http://rezaparang.com/lisp.txt">Lisp sample code</a> should work just fine.</p>
+<p>Let's see how these perform against one another. To do this, I need some text with lots of parentheses. Some Lisp sample code is at the bottom of the post.</p>
 <p>I defined the Lisp text as <code>string</code> and pit the two functions against each other. Firing up Chrome's console:</p>
 <div class="highlight"><pre><span></span><code><span class="k">var</span><span class="w"> </span><span class="n">iterations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span><span class="p">;</span>
 <span class="n">console</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="s1">&#39;Function #1&#39;</span><span class="p">);</span>
@@ -97,6 +97,70 @@ Recently I've been attempting the programming challenges on <a href="https://web
 
 <p>My solution is nearly 13 times as slow! I need to spend more time on why this is the case. I know both the <code>match</code> and <code>replace</code> functions I'm using are expensive and there is certainly some optimization that can be done.</p>
 <p>In the meantime, it's interesting how drastic of a difference the performance of the two are.</p>
+<h3>Lisp syntax example</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nc">class</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nv">initargs</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">or</span><span class="w"> </span><span class="p">(</span><span class="nv">eq?</span><span class="w"> </span><span class="nc">class</span><span class="w"> </span><span class="nv">&lt;class&gt;</span><span class="p">)</span>
+<span class="w">     </span><span class="p">(</span><span class="nv">eq?</span><span class="w"> </span><span class="nc">class</span><span class="w"> </span><span class="nv">&lt;entity-class&gt;</span><span class="p">))</span>
+<span class="w">       </span><span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nv">new</span><span class="w"> </span><span class="p">(</span><span class="nv">%allocate-instance</span>
+<span class="w">        </span><span class="nc">class</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">length</span><span class="w"> </span><span class="nv">the-slots-of-a-class</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">dsupers</span><span class="w"> </span><span class="p">(</span><span class="nv">getl</span><span class="w"> </span><span class="nv">initargs</span><span class="w"> </span><span class="ss">&#39;direct-supers</span><span class="w"> </span><span class="o">&#39;</span><span class="p">()))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">dslots</span><span class="w">  </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">list</span>
+<span class="w">          </span><span class="p">(</span><span class="nv">getl</span><span class="w"> </span><span class="nv">initargs</span><span class="w"> </span><span class="ss">&#39;direct-slots</span><span class="w">  </span><span class="o">&#39;</span><span class="p">())))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">cpl</span><span class="w">     </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="nb">loop</span><span class="w"> </span><span class="p">((</span><span class="nv">sups</span><span class="w"> </span><span class="nv">dsupers</span><span class="p">)</span>
+<span class="w">          </span><span class="p">(</span><span class="nv">so-far</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="nv">new</span><span class="p">)))</span>
+<span class="w">          </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nv">null?</span><span class="w"> </span><span class="nv">sups</span><span class="p">)</span>
+<span class="w">              </span><span class="p">(</span><span class="nb">reverse</span><span class="w"> </span><span class="nv">so-far</span><span class="p">)</span>
+<span class="w">              </span><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">(</span><span class="nv">class-direct-supers</span>
+<span class="w">               </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">sups</span><span class="p">))</span>
+<span class="w">              </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">sups</span><span class="p">)</span>
+<span class="w">              </span><span class="nv">so-far</span><span class="p">)))))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">slots</span><span class="w"> </span><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="nb">append</span>
+<span class="w">          </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="nv">dslots</span>
+<span class="w">          </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nv">class-direct-slots</span>
+<span class="w">               </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="nv">cpl</span><span class="p">)))))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">nfields</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">field-initializers</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">allocator</span>
+<span class="w">          </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nv">init</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">f</span><span class="w"> </span><span class="nv">nfields</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">set!</span><span class="w"> </span><span class="nv">nfields</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="nv">nfields</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">set!</span><span class="w"> </span><span class="nv">field-initializers</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="nv">init</span><span class="w"> </span><span class="nv">field-initializers</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nv">o</span><span class="p">)</span><span class="w">   </span><span class="p">(</span><span class="nv">get-field</span><span class="w">  </span><span class="nv">o</span><span class="w"> </span><span class="nv">f</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nv">o</span><span class="w"> </span><span class="nv">n</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nv">set-field!</span><span class="w"> </span><span class="nv">o</span><span class="w"> </span><span class="nv">f</span><span class="w"> </span><span class="nv">n</span><span class="p">))))))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">getters-n-setters</span>
+<span class="w">          </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="nv">s</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="nv">allocator</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">&#39;</span><span class="p">()))))</span>
+<span class="w">         </span><span class="nv">slots</span><span class="p">)))</span>
+
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;direct-supers</span><span class="w">      </span><span class="nv">dsupers</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;direct-slots</span><span class="w">       </span><span class="nv">dslots</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;cpl</span><span class="w">                </span><span class="nv">cpl</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;slots</span><span class="w">              </span><span class="nv">slots</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;nfields</span><span class="w">            </span><span class="nv">nfields</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;field-initializers</span><span class="w"> </span><span class="p">(</span><span class="nb">reverse</span>
+<span class="w">               </span><span class="nv">field-initializers</span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;getters-n-setters</span><span class="w">  </span><span class="nv">getters-n-setters</span><span class="p">)</span>
+<span class="w">         </span><span class="nv">new</span><span class="p">))</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">eq?</span><span class="w"> </span><span class="nc">class</span><span class="w"> </span><span class="nv">&lt;generic&gt;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">new</span><span class="w"> </span><span class="p">(</span><span class="nv">%allocate-entity</span><span class="w"> </span><span class="nc">class</span>
+<span class="w">            </span><span class="p">(</span><span class="nb">length</span><span class="w"> </span><span class="p">(</span><span class="nv">class-slots</span><span class="w"> </span><span class="nc">class</span><span class="p">)))))</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="ss">&#39;methods</span><span class="w"> </span><span class="p">())</span>
+<span class="w">         </span><span class="nv">new</span><span class="p">))</span>
+<span class="w">      </span><span class="p">((</span><span class="nv">eq?</span><span class="w"> </span><span class="nc">class</span><span class="w"> </span><span class="nv">&lt;method&gt;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">new</span><span class="w"> </span><span class="p">(</span><span class="nv">%allocate-instance</span>
+<span class="w">       </span><span class="nc">class</span>
+<span class="w">       </span><span class="p">(</span><span class="nb">length</span><span class="w"> </span><span class="p">(</span><span class="nv">class-slots</span><span class="w"> </span><span class="nc">class</span><span class="p">)))))</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span>
+<span class="w">        </span><span class="ss">&#39;specializers</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">getl</span><span class="w"> </span><span class="nv">initargs</span><span class="w"> </span><span class="ss">&#39;specializers</span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="nv">slot-set!</span><span class="w"> </span><span class="nv">new</span>
+<span class="w">        </span><span class="ss">&#39;procedure</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">getl</span><span class="w"> </span><span class="nv">initargs</span><span class="w"> </span><span class="ss">&#39;procedure</span><span class="p">))</span>
+<span class="w">         </span><span class="nv">new</span><span class="p">)))))</span>
+</code></pre></div>
   </section>
 </article>
     </div>
