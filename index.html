@@ -35,6 +35,24 @@
     <div class="content pure-u-1 pure-u-md-4-5">
     <article class="entry">
       <header>
+        <h1><a href="step-by=step guide-for-fine-tuning-gpt-2-medium-from-scratch.html">A Step-by-Step Guide for Fine-Tuning GPT-2 Medium From Scratch</a></h1>
+      </header>
+      <section><h2>Summary</h2>
+<p>This blog post documents my full process and learnings while fine-tuning a GPT-2 Medium language model from scratch using the Alpaca instruction dataset. </p>
+<p>It includes:</p>
+<ul>
+<li>My own dataloader implementation built to work with a from-scratch GPT-2 model following Andrej Karpathy’s Zero-to-Hero series.</li>
+<li>Training a dataset of ~51,000 samples on an NVIDIA A100 for 2 epochs, reaching a validation loss of about 1.7.</li>
+<li>Insights about how I handled special tokens, padding, and attention masking.</li>
+<li>A walkthrough of resizing GPT-2 model layers to accommodate new tokens.</li>
+<li>Example generations before and after fine-tuning to highlight the transformation from base model to assistant-style responses.</li>
+</ul>
+<p>All code is <a href="https://github.com/rparang/gpt2_finetune">available here</a>.</p>
+<h2>Introduction</h2>
+<p>The goal of this project was to build and fine-tune a GPT-2 Medium model (355M parameters) from scratch, using a curated dataset with instruction-following examples. I was specifically interested in exploring supervised fine-tuning (SFT) — a key step in taking a …</p></section>
+    </article>
+    <article class="entry">
+      <header>
         <h1><a href="how-often-are-we-tracked-online.html">How Often Are We Tracked Online?</a></h1>
       </header>
       <section><p><em>Originally published June 2015</em></p>
