@@ -38,7 +38,9 @@
     <h1>Fine-Tuning GPT-2 Medium From Scratch</h1>
   </header>
   <section>
-    <h2>Summary</h2>
+    <p><em>Published: August 5, 2025</em></p>
+<p><img alt="Paint Hip Hop" src="./images/gpt2_cover.png"></p>
+<h2>Summary</h2>
 <p>This blog post documents my full process and learnings while fine-tuning a GPT-2 Medium language model from scratch using the Alpaca instruction dataset. </p>
 <p>It includes:</p>
 <ul>
@@ -156,7 +158,7 @@ If the model is guessing randomly — meaning it assigns equal probability to al
 
 <p>GPT2Tokenizer has a method add_special_tokens() which supports introducing key/value pairs as you need. I also saved these in a self.special_tokens attribute for easy reference later.</p>
 <p>We load the training set into self.samples and split them into self.train_data and self.val_data with a 90%/10% split. These aren’t randomized first, so the validation will consistently be the last 10% of the dataset.</p>
-<p>We also call encode_sample() when reading the datafile which does the heavy lifting for encoding and formatting our inputs and labels:</p>
+<p>We also call <code>encode_sample()</code> when reading the datafile which does the heavy lifting for encoding and formatting our inputs and labels:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">encode_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">answer</span><span class="p">):</span>
     <span class="n">q_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
     <span class="n">a_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
